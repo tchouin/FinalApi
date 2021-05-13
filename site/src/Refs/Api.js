@@ -9,6 +9,6 @@ export default axios.create({
     baseURL: devUrl,
     responseType: "json",
     headers: {
-        Authorization: "Basic " + token,
+        Authorization: "basic " + token,
     }
 });

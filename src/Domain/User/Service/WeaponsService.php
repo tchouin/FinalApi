@@ -42,8 +42,8 @@ class WeaponsService {
             return "0 Operations successful!";
         }
     }
-    public function ChangeWeapon($_id,$modif){
-        return $this->repository->UpdateWeapon($_id,$modif);
+    public function ChangeWeapon($_name,$modif){
+        return $this->repository->UpdateWeapon($_name,$modif);
     }
 }
 

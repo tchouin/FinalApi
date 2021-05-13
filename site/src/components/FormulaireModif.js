@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class Formulaire extends React.Component {
+class FormulaireModif extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,9 +30,8 @@ class Formulaire extends React.Component {
             type: this.state.type,
             damage: this.state.damage,
         };
-        this.props.AddWeapons(weapon);
+        this.props.UpdateWeapon(weapon);
         event.preventDefault();
-        this.clearInput();
     }
 
     render(){
@@ -45,26 +44,26 @@ class Formulaire extends React.Component {
                     <table>
                         <thead>
                         <tr>
-                            <th colSpan="2"><h3>Ajouter une arme</h3></th>
+                            <th colSpan="2"><h3>Modifier une arme</h3></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td><label>Nom de l'arme : </label></td>
                             <td>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={this.state.name}
-                                        onChange={this.handleChange}
-                                    >
-                                    </input>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={this.state.name}
+                                    onChange={this.handleChange}
+                                >
+                                </input>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><label>Type : </label></td>
+                            <td><label>Nouveau Type : </label></td>
                             <td style={{'textAlign':'right'}}>
                                 <input
                                     type="text"
@@ -78,7 +77,7 @@ class Formulaire extends React.Component {
                         </tr>
 
                         <tr>
-                            <td><label>Dégâts : </label></td>
+                            <td><label>nombre de Dégâts : </label></td>
                             <td style={{'textAlign':'right'}}>
                                 <input
                                     type="text"
@@ -112,4 +111,4 @@ class Formulaire extends React.Component {
     }
 }
 
-export default (Formulaire);
+export default (FormulaireModif);

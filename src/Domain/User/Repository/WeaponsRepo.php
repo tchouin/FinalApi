@@ -57,14 +57,14 @@ class WeaponsRepo
         return $result;
     }
 
-    public function UpdateWeapon($_id,$tab):string{
-        $id = $_id;
-        $sql = "UPDATE weapon SET nom='$tab[0]',type='$tab[1]',damage='$tab[2]' WHERE id = '$id'";
+    public function UpdateWeapon($_name,$tab):string{
+        $name = $_name;
+        $sql = "UPDATE weapon SET type='$tab[1]',damage='$tab[2]' WHERE name = '$name'";
         $req = $this->connection->prepare($sql);
         if($req->execute() == true){
-            $result = "Data Updated! <br> Weapon : " . $_id;
+            $result = "Data Updated! <br> Weapon : " . $_name;
         }else {
-            $result = "0 Data Affected! <br> ". $tab[1];
+            $result = "0 Data Affected! <br> ". $name;
         }
         return $result;
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import Api from '../Refs/Api';
 import WeaponList from "./WeaponList";
 import Formulaire from "./Formulaire";
+import FormulaireModif from "./FormulaireModif";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -49,6 +50,24 @@ class MainPage extends React.Component {
         console.log("Arme ajoutée")
     }
 
+    UpdateWeapon(WeaponToUpdate) {
+        Api({
+            method: 'POST',
+            url: '/weapons/update',
+            data: {
+                name: WeaponToUpdate.name,
+                type: WeaponToUpdate.type,
+                damage: WeaponToUpdate.damage,
+            }
+        })
+            .then((resultat) => {
+                WeaponToUpdate.type = resultat.data.type;
+                const WeaponsUpdated = [...this.state.weapons, WeaponToUpdate];
+                this.setState({weapons: WeaponsUpdated});
+            });
+        console.log("Arme modifié")
+    }
+
     DeleteWeapons(id) {
         Api({
             method: 'DELETE',
@@ -68,8 +87,10 @@ class MainPage extends React.Component {
                 <table className="Table">
                     <tbody>
                     <tr>
-                        <td><Formulaire ajouArme={this.AddWeapons}/></td>
+
+                        <td><Formulaire ajoutArme={this.AddWeapons}/></td>
                         <td><WeaponList weapons={this.list}/></td>
+                        <td><FormulaireModif weapon={this.UpdateWeapon}/></td>
                     </tr>
                     </tbody>
                 </table>
