@@ -67,11 +67,11 @@ $settings['logger'] = [
 $settings['twig'] =
 [
     'paths' => [
-        __DIR__ . "/../templates",
+        __DIR__ . "/../Templates",
     ],
     'options'=>[
         'cache_enabled' => false,
-        'cache_path' => __DIR__ . '/../tmp/twig',
+        'cache_path' => __DIR__ . '/../vendor/twig',
     ],
 ];
 
