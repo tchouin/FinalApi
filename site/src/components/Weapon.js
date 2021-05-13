@@ -1,21 +1,25 @@
 import React from 'react';
 
 class Weapon extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render(){
 
         return (
+            <div>
             <tr>
-                <td>{this.props.weapon.name} : </td>
-                <td>{this.props.weapon.type}</td>
-                <td>{this.props.wepon.damage}</td>
+                <td>{this.props['name']}</td>
+                <td>{this.props['type']}</td>
                 <td>
-                    <button>Éditer</button>
+                    <button>Modifier</button>
                 </td>
                 <td>
                     <button>Supprimer</button>
                 </td>
             </tr>
+                </div>
         );
     }
 }
