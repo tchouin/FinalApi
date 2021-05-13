@@ -1,0 +1,149 @@
+---
+openapi: 3.0.0
+info:
+  title: FINAL
+  description: Un API d'un jeu créé dans le cadre du cours Services Web H2021
+  version: 0.0.0.1
+servers:
+- url: http://localhost/apiFinal
+paths:
+      /weapons:
+         get:
+           tags:
+             - Weapons
+           summary: Affiche la liste de tous les armes.
+           responses:
+             '200':
+               description: Un tableau d'armes affichant le numéro,le nom et le type
+               content:
+                 application/json:
+                   schema:
+                     $ref: '#/components/schemas/Weapon'
+      /weapons/delete:
+         delete:
+             tags:
+               - Supression
+             summary: supprime une arme.
+             parameters:
+               - name: ID
+                 in: path
+                 required: true
+                 description: Le numéro de l'arme
+                 schema:
+                   type: integer
+             responses:
+               '200':
+                 description: l'arme qui a été supprimée
+                 content:
+                   application/json:
+                     schema:
+                       $ref: '#/components/schemas/Weapon'
+      /weapons/create:
+           post:
+             tags:
+               - Creation
+             summary: Crée une arme.
+             requestBody:
+               description: Les informations de l'arme à créer
+               required: true
+               content:
+                 application/json:
+                   schema:
+                     type: object
+                     properties:
+                       nom:
+                         type: string
+                       type:
+                         type: string
+                       damage:
+                         type: integer
+                       max_ammo:
+                         type: integer
+                     example:
+                       nom: P9mm
+                       type: Pistol
+                       damage: 35
+                       max_ammo: 20
+             responses:
+               '201':
+                 description: Le numéro de l'arme créé
+                 content:
+                   application/json:
+                     schema:
+                       type: object
+                       properties:
+                         weaponId:
+                           type: integer
+                       example:
+                         WeaponId: 1
+      /weapons/update:
+                   patch:
+                     tags:
+                       - update
+                     summary: Modifie une arme.
+                     requestBody:
+                       description: Les informations de l'arme à changer
+                       required: true
+                       content:
+                         application/json:
+                           schema:
+                             type: object
+                             properties:
+                               nom:
+                                 type: string
+                               type:
+                                 type: string
+                               damage:
+                                 type: integer
+                               max_ammo:
+                                 type: integer
+                             example:
+                               nom: P9mm
+                               type: Pistol
+                               damage: 35
+                               max_ammo: 20
+                     responses:
+                       '201':
+                         description: Le numéro de l'arme qui a été modifier
+                         content:
+                           application/json:
+                             schema:
+                               type: object
+                               properties:
+                                 weaponId:
+                                   type: integer
+                               example:
+                                 WeaponId: 1
+components:
+            schemas:
+              Weapon:
+                type: object
+                required:
+                  - name
+                  - type
+                  - damage
+                  - max_ammo
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  damage:
+                    type: integer
+                    format: int64
+                  max_ammo:
+                    type: integer
+                    format: int64
+                example:
+                  id: 0
+                  name: P9mm
+                  type: Pistol
+                  damage: 35
+                  max_ammo: 20
+              Weapons:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Weapon'
