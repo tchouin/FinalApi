@@ -15,7 +15,7 @@ return function (App $app) {
     $app->delete('/weapons/delete',\App\Action\DeleteWeapon::class)
         ->add(BasicAuthMiddleware::class);
 
-    $app->put('/weapons/update',\App\Action\UpdateWeapon::class);
+    $app->patch('/weapons/update',\App\Action\UpdateWeapon::class);
 
     $app->get('/docs',\App\Action\SwaggerUiAction::class);
 

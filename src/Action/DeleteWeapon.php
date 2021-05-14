@@ -25,10 +25,10 @@ class DeleteWeapon {
         ResponseInterface $response
     ): ResponseInterface
     {
-        $id = $request->getQueryParams();
+        $params = $request->getQueryParams();
 
         // Invoke the Domain with inputs and retain the result
-        $data = $this->service->DeleteWeaponAt($id["id"]);
+        $data = $this->service->DeleteWeaponAt($params["name"]);
 
         $result = json_encode([
             'Result' => $data

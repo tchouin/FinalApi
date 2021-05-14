@@ -1,0 +1,21 @@
+
+Route : http://127.0.0.1/apiFinal/FinalApi/weapons/create
+
+Code retourné : 201
+
+Body : [FORMAT JSON]
+
+["test","test",50,20]
+
+--------------------------------------------------------------------------------------------
+
+[Test Code] : 
+
+pm.test("La création fonctionne",function () {
+    pm.response.to.have.status(201);
+})
+
+pm.test("valeurs de la réponse = correct", function(){
+
+    pm.expect(jsonData.name).to.be.a(String);
+}

@@ -29,11 +29,11 @@ class CreateWeapon {
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $Id = $this->Services->CreateWeapons($data);
+        $name = $this->Services->CreateWeapons($data);
 
         // Transform the result into the JSON representation
         $result = [
-            'id' => $Id
+            'name' => $name
         ];
 
         if($result >= 0 or $result != null){

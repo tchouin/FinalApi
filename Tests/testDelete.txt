@@ -1,0 +1,21 @@
+
+Route : http://127.0.0.1/apiFinal/FinalApi/weapons/delete
+
+Code retourné : 200
+
+PARAMS: [name = 'test']
+
+Retour : test removed!
+
+--------------------------------------------------------------------------------------------
+
+[Test Code] : 
+
+pm.test("La supression fonctionne",function () {
+    pm.response.to.have.status(200);
+})
+
+pm.test("valeurs de la réponse = correct", function(){
+
+    pm.expect(jsonData.name).to.be.a(String);
+}

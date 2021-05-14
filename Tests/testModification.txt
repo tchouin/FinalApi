@@ -1,0 +1,23 @@
+
+Route : http://127.0.0.1/apiFinal/FinalApi/weapons/update
+
+Code retourné : 201
+
+PARAMS: [name = 'test']
+
+Body : [FORMAT JSON]
+
+["test",20]
+
+--------------------------------------------------------------------------------------------
+
+[Test Code] : 
+
+pm.test("La modification fonctionne",function () {
+    pm.response.to.have.status(201);
+})
+
+pm.test("valeurs de la réponse = correct", function(){
+
+    pm.expect(jsonData.name).to.be.a(String);
+}

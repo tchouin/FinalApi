@@ -1,0 +1,27 @@
+
+Route : http://127.0.0.1/apiFinal/FinalApi/weapons
+
+Code retourné : 200
+
+Retour : [FORMAT JSON]
+
+{
+    "Results": "<br>1, Name : P9mm, type : pistol \\ <br>2, Name : Master P9mm, type : pistol \\ <br>"
+}
+
+--------------------------------------------------------------------------------------------
+
+[Test Code] : 
+
+pm.test("La liste fonctionne",function () {
+    pm.response.to.have.status(200);
+})
+
+pm.test("valeurs de la réponse = correct", function(){
+
+    pm.expect(jsonData.id).to.be.a(Number);
+
+    pm.expect(jsonData.name).to.be.a(String);
+
+    pm.expect(jsonData.type).to.be.a(String);
+}

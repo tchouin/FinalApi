@@ -25,12 +25,12 @@ class UpdateWeapon {
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        $name = (array)$request->getQueryParams();
+        $params = (array)$request->getQueryParams();
         // Collect input from the HTTP request
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $Name = $this->Services->ChangeWeapon($name['name'],$data);
+        $Name = $this->Services->ChangeWeapon($params['name'],$data);
 
         // Transform the result into the JSON representation
         $result = [

@@ -38,31 +38,31 @@ class WeaponsRepo
         $sql = "INSERT INTO weapon (name,type,damage,max_ammo) VALUES ('$tab[0]','$tab[1]','$tab[2]','$tab[3]')";
         $req = $this->connection->prepare($sql);
         if($req->execute() == true){
-            $result = "Data Created! Nom de l'arme ajouté : " . $tab[0];
+            $result = $tab[0];
         }else {
             $result = "0 Data Created!";
         }
         return $result;
     }
 
-    public function WeaponSupression($_id){
-        $id = $_id;
-        $sql = "DELETE FROM weapon WHERE id = '$id'";
+    public function WeaponSupression($_name){
+        $name = $_name;
+        $sql = "DELETE FROM weapon WHERE name = '$name'";
         $req = $this->connection->prepare($sql);
         if($req->execute() == true){
-            $result = "Data Removed! Weapon #" . $_id;
+            $result = $name . "removed!";
         }else {
-            $result = "0 Data Removed! ". $_id;
+            $result = "0 Data Removed! ". $_name;
         }
         return $result;
     }
 
     public function UpdateWeapon($_name,$tab):string{
         $name = $_name;
-        $sql = "UPDATE weapon SET type='$tab[1]',damage='$tab[2]' WHERE name = '$name'";
+        $sql = "UPDATE weapon SET type='$tab[0]',damage='$tab[1]' WHERE name = '$name'";
         $req = $this->connection->prepare($sql);
         if($req->execute() == true){
-            $result = "Data Updated! <br> Weapon : " . $_name;
+            $result = $name;
         }else {
             $result = "0 Data Affected! <br> ". $name;
         }
